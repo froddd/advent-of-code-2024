@@ -1,7 +1,13 @@
-const part1 = input => {
+const getLists = input => {
 	const lines = input.map(line => line.split(/\s+/).map(Number))
 	const list1 = lines.map(line => line[0]).sort()
 	const list2 = lines.map(line => line[1]).sort()
+
+	return { list1, list2 }
+}
+
+const part1 = input => {
+	const { list1, list2} = getLists(input)
 
 	let totalDiff = 0
 	for(let i = 0; i < list1.length; i++) {
@@ -9,14 +15,10 @@ const part1 = input => {
 	}
 
 	return totalDiff
-
 }
 
 const part2 = input => {
-
-	const lines = input.map(line => line.split(/\s+/).map(Number))
-	const list1 = lines.map(line => line[0]).sort()
-	const list2 = lines.map(line => line[1]).sort()
+	const { list1, list2} = getLists(input)
 
 	let totalDiff = 0
 	for(let i = 0; i < list1.length; i++) {
@@ -25,7 +27,6 @@ const part2 = input => {
 	}
 	
 	return totalDiff
-
 }
 
 module.exports = {

@@ -46,6 +46,28 @@ const part1 = input => {
     return count
 }
 
+const part2 = input => {
+    const maxY = input.length -1
+    const maxX = input[0].length -1
+    let count = 0
+
+    for (let y = 0; y < input.length; y++) {
+        for (let x = 0; x < input[y].length; x++) {
+            if (y > 0 && y < maxY && x > 0 && x < maxX && input[y][x] === 'A') {
+                if (
+                    ((input[y-1][x-1] === 'M' && input[y+1][x+1] === 'S') || (input[y-1][x-1] === 'S' && input[y+1][x+1] === 'M')) &&
+                    ((input[y+1][x-1] === 'M' && input[y-1][x+1] === 'S') || (input[y+1][x-1] === 'S' && input[y-1][x+1] === 'M'))
+                ) {
+                    count += 1
+                }
+            }
+        }
+    }
+
+    return count
+}
+
 module.exports = {
-    part1
+    part1,
+    part2
 }
